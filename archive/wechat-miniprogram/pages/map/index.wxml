@@ -1,0 +1,118 @@
+<!-- pages/map/index.wxml - 地图探索主页面 -->
+<view class="map-page">
+
+  <!-- Canvas 地图层 -->
+  <canvas 
+    type="2d" 
+    id="mapCanvas" 
+    class="map-canvas"
+    bindtouchstart="onTouchStart"
+    bindtouchmove="onTouchMove"
+    bindtouchend="onTouchEnd"
+  ></canvas>
+
+  <!-- 摇杆控制器（左下角） -->
+  <view class="joystick-container" 
+    bindtouchstart="onJoystickStart"
+    bindtouchmove="onJoystickMove"
+    bindtouchend="onJoystickEnd"
+  >
+    <view class="joystick-base">
+      <view class="joystick-thumb" style="left: {{joystickX}}px; top: {{joystickY}}px;"></view>
+    </view>
+  </view>
+
+  <!-- 发现提示 -->
+  <view class="discover-toast {{discoverVisible ? 'show' : ''}}" bindtap="openCatDetail">
+    <text class="toast-icon">🐱</text>
+    <view class="toast-text">
+      <text class="toast-name">发现了 {{nearbyCat?.name || '一只猫咪'}}！</text>
+      <text class="toast-hint">点击查看详情 →</text>
+    </view>
+  </view>
+
+  <!-- 已发现猫咪计数 -->
+  <view class="discovery-badge">
+    <text>🐾 {{discoveredCount}}/{{totalCats}}</text>
+  </view>
+
+  <!-- 猫咪图鉴弹窗 -->
+  <view class="cat-modal {{modalVisible ? 'show' : ''}}" catchtouchmove="preventScroll">
+    <view class="modal-mask" bindtap="closeModal"></view>
+    <view class="modal-content">
+      
+      <!-- 猫咪头像 -->
+      <view class="cat-avatar">
+        <image 
+          class="cat-photo" 
+          src="{{activeCat.photo || '/assets/default-cat.png'}}" 
+          mode="aspectFill"
+        />
+        <view class="cat-name-tag">
+          <text class="cat-name">{{activeCat.name}}</text>
+          <text class="cat-nickname" wx:if="{{activeCat.nickname}}">「{{activeCat.nickname}}」</text>
+        </view>
+      </view>
+
+      <!-- 基本信息 -->
+      <view class="cat-info-grid">
+        <view class="info-item">
+          <text class="info-label">性别</text>
+          <text class="info-value">{{activeCat.gender === 'male' ? '♂ 男孩' : '♀ 女孩'}}</text>
+        </view>
+        <view class="info-item">
+          <text class="info-label">花色</text>
+          <text class="info-value">{{activeCat.color}}</text>
+        </view>
+        <view class="info-item">
+          <text class="info-label">绝育</text>
+          <text class="info-value {{activeCat.neutered ? 'done' : 'pending'}}">
+            {{activeCat.neutered ? '✅ 已完成' : '⚠️ 未绝育'}}
+          </text>
+        </view>
+        <view class="info-item">
+          <text class="info-label">收养</text>
+          <text class="info-value {{activeCat.adopted ? 'done' : ''}}">
+            {{activeCat.adopted ? '🏠 已收养' : '🏫 校园猫'}}
+          </text>
+        </view>
+      </view>
+
+      <!-- 性格描述 -->
+      <view class="cat-desc" wx:if="{{activeCat.description}}">
+        <text class="desc-label">📝 性格</text>
+        <text class="desc-text">{{activeCat.description}}</text>
+      </view>
+
+      <!-- 常出没地点 -->
+      <view class="cat-location" wx:if="{{activeCat.hangout}}">
+        <text class="loc-label">📍 常出没</text>
+        <text class="loc-text">{{activeCat.hangout}}</text>
+      </view>
+
+      <!-- 亲属关系 -->
+      <view class="cat-family" wx:if="{{activeCat.relations && activeCat.relations.length}}">
+        <text class="family-label">👨‍👩‍👧 亲属关系</text>
+        <view class="family-list">
+          <view class="family-item" wx:for="{{activeCat.relations}}" wx:key="catId">
+            <text>{{item.relation}}：</text>
+            <text class="family-name">{{item.name}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 操作按钮 -->
+      <view class="modal-actions">
+        <button class="action-btn primary" bindtap="viewDetail">查看完整档案</button>
+        <button class="action-btn" bindtap="closeModal">继续探索</button>
+      </view>
+
+    </view>
+  </view>
+
+  <!-- 小地图 -->
+  <view class="minimap">
+    <canvas type="2d" id="minimapCanvas" class="minimap-canvas"></canvas>
+  </view>
+
+</view>

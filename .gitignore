@@ -1,0 +1,29 @@
+# === Node.js ===
+node_modules/
+output/
+photos/
+
+# === Python ===
+__pycache__/
+*.pyc
+.venv/
+
+# === Unity ===
+[Bb]uild/
+[Bb]uilds/
+[Ll]ibrary/
+[Ll]ocal[Cc]ache/
+[Tt]emp/
+[Oo]bj/
+*.csproj
+*.sln
+*.pidb
+*.unitypackage
+*.suo
+*.user
+*.userprefs
+
+# === OS ===
+.DS_Store
+Thumbs.db
+*.log

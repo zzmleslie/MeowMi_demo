@@ -1,0 +1,16 @@
+{
+  "name": "nanyang-cat-notes",
+  "version": "0.2.0",
+  "description": "南雍猫札 - 南京大学鼓楼校区猫咪探索游戏 (Unity + Python 数据工具链)",
+  "main": "index.js",
+  "scripts": {
+    "preprocess": "node scripts/preprocess.js",
+    "scrape": "python scripts/scraper.py --gui"
+  },
+  "dependencies": {
+    "sharp": "^0.33.0"
+  },
+  "devDependencies": {},
+  "keywords": ["unity", "game", "cats", "nju", "2d"],
+  "license": "MIT"
+}

@@ -1,0 +1,51 @@
+<!-- pages/gallery/index.wxml - 云吸猫画廊 -->
+<view class="page-container gallery-page">
+  
+  <view class="gallery-header">
+    <text class="gallery-title">📷 云吸猫画廊</text>
+    <text class="gallery-subtitle">看看大家镜头下的小可爱们~</text>
+  </view>
+
+  <!-- 猫咪筛选栏 -->
+  <scroll-view class="cat-filter" scroll-x="true">
+    <view class="filter-item active">全部</view>
+    <view class="filter-item" wx:for="{{cats}}" wx:key="id" bindtap="filterByCat" data-id="{{item.id}}">
+      {{item.name}}
+    </view>
+  </scroll-view>
+
+  <!-- 照片网格 -->
+  <view class="photo-grid">
+    <view class="photo-card {{index % 3 === 0 ? 'tall' : ''}}" 
+      wx:for="{{photos}}" wx:key="id" 
+      bindtap="viewPhoto" data-photo="{{item}}"
+    >
+      <image class="photo-img" src="{{item.url}}" mode="aspectFill" lazy-load="true"/>
+      <view class="photo-overlay">
+        <text class="photo-cat-name">{{item.catName}}</text>
+        <text class="photo-date">{{item.date}}</text>
+      </view>
+    </view>
+
+    <view class="photo-empty-state" wx:if="{{photos.length === 0}}">
+      <text class="empty-icon">🐱</text>
+      <text class="empty-title">还没有人分享照片哦~</text>
+      <text class="empty-desc">快去校园里邂逅猫咪，拍下它们的可爱瞬间吧！</text>
+      <text class="empty-hint">上传功能即将开放 ✨</text>
+    </view>
+  </view>
+
+  <!-- 图片预览 -->
+  <view class="preview-modal {{previewVisible ? 'show' : ''}}" bindtap="closePreview">
+    <image 
+      class="preview-img" 
+      src="{{previewPhoto.url}}" 
+      mode="aspectFit"
+    />
+    <view class="preview-info">
+      <text class="preview-name">{{previewPhoto.catName}}</text>
+      <text class="preview-date">{{previewPhoto.date}}</text>
+    </view>
+  </view>
+
+</view>

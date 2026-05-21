@@ -1,0 +1,139 @@
+{
+  "mapName": "南京大学鼓楼校区",
+  "mapSize": { "width": 2000, "height": 2000 },
+  "description": "基于真实校园布局的手绘风格地图数据",
+
+  "buildings": [
+    {
+      "id": "bld_01",
+      "name": "北大楼",
+      "x": 800, "y": 300,
+      "w": 180, "h": 130,
+      "color": "#C4B5A5",
+      "strokeColor": "#8B7355",
+      "contour": [
+        [800, 300], [980, 300], [980, 340], [950, 340],
+        [950, 430], [830, 430], [830, 340], [800, 340]
+      ]
+    },
+    {
+      "id": "bld_02",
+      "name": "大礼堂",
+      "x": 900, "y": 500,
+      "w": 160, "h": 120,
+      "color": "#D4C4A8",
+      "strokeColor": "#8B7355"
+    },
+    {
+      "id": "bld_03",
+      "name": "图书馆",
+      "x": 500, "y": 400,
+      "w": 200, "h": 100,
+      "color": "#D0C0B0",
+      "strokeColor": "#8B7355"
+    },
+    {
+      "id": "bld_04",
+      "name": "教学楼",
+      "x": 1100, "y": 350,
+      "w": 160, "h": 110,
+      "color": "#CCC0B0",
+      "strokeColor": "#8B7355"
+    },
+    {
+      "id": "bld_05",
+      "name": "食堂",
+      "x": 600, "y": 700,
+      "w": 140, "h": 90,
+      "color": "#E0D0B8",
+      "strokeColor": "#8B7355"
+    },
+    {
+      "id": "bld_06",
+      "name": "体育馆",
+      "x": 1300, "y": 600,
+      "w": 150, "h": 120,
+      "color": "#C8BCAA",
+      "strokeColor": "#8B7355"
+    },
+    {
+      "id": "bld_07",
+      "name": "宿舍区",
+      "x": 400, "y": 800,
+      "w": 250, "h": 80,
+      "color": "#E8DDC8",
+      "strokeColor": "#8B7355"
+    },
+    {
+      "id": "bld_08",
+      "name": "行政楼",
+      "x": 750, "y": 150,
+      "w": 120, "h": 90,
+      "color": "#D8CCB8",
+      "strokeColor": "#8B7355"
+    }
+  ],
+
+  "trees": [
+    { "x": 700, "y": 280, "radius": 40, "type": "wutong" },
+    { "x": 1050, "y": 320, "radius": 35, "type": "wutong" },
+    { "x": 880, "y": 480, "radius": 45, "type": "wutong" },
+    { "x": 950, "y": 520, "radius": 30, "type": "yinghua" },
+    { "x": 550, "y": 380, "radius": 38, "type": "wutong" },
+    { "x": 480, "y": 420, "radius": 35, "type": "wutong" },
+    { "x": 1150, "y": 370, "radius": 42, "type": "wutong" },
+    { "x": 650, "y": 680, "radius": 30, "type": "yinghua" },
+    { "x": 1350, "y": 580, "radius": 36, "type": "wutong" },
+    { "x": 420, "y": 780, "radius": 40, "type": "yinghua" },
+    { "x": 300, "y": 500, "radius": 45, "type": "wutong" },
+    { "x": 1000, "y": 200, "radius": 33, "type": "wutong" },
+    { "x": 1400, "y": 300, "radius": 38, "type": "yinghua" },
+    { "x": 200, "y": 650, "radius": 42, "type": "wutong" },
+    { "x": 1500, "y": 700, "radius": 35, "type": "wutong" },
+    { "x": 850, "y": 750, "radius": 30, "type": "yinghua" }
+  ],
+
+  "paths": [
+    {
+      "points": [
+        [300, 500], [500, 400], [800, 300], [1100, 350], [1400, 400]
+      ],
+      "width": 16,
+      "name": "主干道"
+    },
+    {
+      "points": [
+        [500, 400], [600, 700], [400, 800]
+      ],
+      "width": 14,
+      "name": "西侧路"
+    },
+    {
+      "points": [
+        [800, 300], [900, 500], [1300, 600]
+      ],
+      "width": 14,
+      "name": "东侧路"
+    },
+    {
+      "points": [
+        [900, 500], [500, 400]
+      ],
+      "width": 12,
+      "name": "连接路"
+    }
+  ],
+
+  "catSpots": [
+    { "id": "spot_01", "catId": "cat_001", "x": 820, "y": 260, "description": "北大楼台阶" },
+    { "id": "spot_02", "catId": "cat_001", "x": 520, "y": 380, "description": "图书馆门口草坪" },
+    { "id": "spot_03", "catId": "cat_002", "x": 920, "y": 470, "description": "大礼堂梧桐树下" },
+    { "id": "spot_04", "catId": "cat_003", "x": 620, "y": 690, "description": "食堂后门" },
+    { "id": "spot_05", "catId": "cat_003", "x": 430, "y": 810, "description": "宿舍区" },
+    { "id": "spot_06", "catId": "cat_004", "x": 840, "y": 350, "description": "北大楼花坛" },
+    { "id": "spot_07", "catId": "cat_005", "x": 1320, "y": 580, "description": "操场看台" },
+    { "id": "spot_08", "catId": "cat_005", "x": 1280, "y": 620, "description": "体育馆角落" },
+    { "id": "spot_09", "catId": "cat_006", "x": 450, "y": 820, "description": "宿舍区（已收养）" },
+    { "id": "spot_10", "catId": "cat_002", "x": 380, "y": 520, "description": "南园小树林" }
+  ]
+}

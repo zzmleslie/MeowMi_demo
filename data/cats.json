@@ -1,0 +1,101 @@
+[
+  {
+    "id": "cat_001",
+    "name": "大黄",
+    "nickname": "北大楼霸主",
+    "gender": "male",
+    "color": "橘白",
+    "neutered": true,
+    "adopted": false,
+    "description": "北大楼附近最常出没的橘猫，性格温顺，喜欢晒太阳。每天早上会在北大楼台阶上等投喂，是鼓楼校区最资深的「学长猫」。不怕人，可以摸头，但不喜欢被摸尾巴。",
+    "hangout": "北大楼台阶、图书馆门口草坪",
+    "photo": "",
+    "relations": [
+      { "catId": "cat_003", "relation": "疑似父亲", "name": "小橘" },
+      { "catId": "cat_004", "relation": "经常一起出现", "name": "花花" }
+    ],
+    "tags": ["亲人", "资深学长", "橘猫"],
+    "firstSeen": "2019年秋"
+  },
+  {
+    "id": "cat_002",
+    "name": "雪球",
+    "nickname": "白富美",
+    "gender": "female",
+    "color": "纯白",
+    "neutered": true,
+    "adopted": false,
+    "description": "通体雪白的长毛猫，颜值超高，性格高冷。常在大礼堂附近的梧桐树下活动。因为长得好看，是校园里被拍照最多的猫咪。",
+    "hangout": "大礼堂梧桐树、南园小树林",
+    "photo": "",
+    "relations": [],
+    "tags": ["高冷", "颜值担当", "长毛"],
+    "firstSeen": "2020年春"
+  },
+  {
+    "id": "cat_003",
+    "name": "小橘",
+    "nickname": "小太阳",
+    "gender": "male",
+    "color": "全橘",
+    "neutered": false,
+    "adopted": false,
+    "description": "全橘色短毛猫，大黄的「迷你版」。特别爱叫，看到人就会喵喵叫讨食。性格超级黏人，是新手云吸猫的最佳入门选择。⚠️ 还未绝育！",
+    "hangout": "食堂后门、学生宿舍区",
+    "photo": "",
+    "relations": [
+      { "catId": "cat_001", "relation": "疑似儿子", "name": "大黄" }
+    ],
+    "tags": ["话痨", "黏人", "待绝育"],
+    "firstSeen": "2021年夏"
+  },
+  {
+    "id": "cat_004",
+    "name": "花花",
+    "nickname": "三花娘娘",
+    "gender": "female",
+    "color": "三花",
+    "neutered": true,
+    "adopted": false,
+    "description": "三花猫，花纹对称漂亮。性格胆小谨慎，但熟悉后会主动蹭人。经常和大黄一起出现在北大楼附近，被同学们戏称为「北大楼夫妇」。",
+    "hangout": "北大楼花坛、图书馆后巷",
+    "photo": "",
+    "relations": [
+      { "catId": "cat_001", "relation": "经常一起出现", "name": "大黄" }
+    ],
+    "tags": ["胆小", "三花", "CP猫"],
+    "firstSeen": "2019年冬"
+  },
+  {
+    "id": "cat_005",
+    "name": "墨墨",
+    "nickname": "暗夜精灵",
+    "gender": "male",
+    "color": "纯黑",
+    "neutered": true,
+    "adopted": false,
+    "description": "纯黑色的猫，黄色眼睛特别亮。白天很少出现，傍晚后活跃。多在操场附近出没。因为黑色在夜里几乎隐身，被同学们叫做「暗夜精灵」。",
+    "hangout": "操场看台、体育馆角落",
+    "photo": "",
+    "relations": [],
+    "tags": ["夜猫子", "独行侠", "神秘"],
+    "firstSeen": "2020年秋"
+  },
+  {
+    "id": "cat_006",
+    "name": "奶茶",
+    "nickname": "小奶猫",
+    "gender": "female",
+    "color": "玳瑁",
+    "neutered": false,
+    "adopted": true,
+    "description": "玳瑁色小猫，2023年刚出现的幼猫。已经被爱心同学收养，现在是校园猫中唯一有家的幸运儿！偶尔还会被带回校园「探亲」。",
+    "hangout": "已被收养（偶尔回校探亲）",
+    "photo": "",
+    "relations": [
+      { "catId": "cat_004", "relation": "疑似母亲", "name": "花花" }
+    ],
+    "tags": ["已收养", "小奶猫", "幸运儿"],
+    "firstSeen": "2023年春"
+  }
+]
