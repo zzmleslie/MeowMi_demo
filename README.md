@@ -1,4 +1,4 @@
-# 🐱 南雍猫札 — Nanyang Cat Chronicles
+# 🐱 project 喵喵喵喵
 
 > 「每一只猫猫，都值得被记住」—— 南京大学鼓楼校区猫咪探索游戏
 
