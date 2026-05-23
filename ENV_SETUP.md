@@ -74,7 +74,7 @@ git config --global user.email "你的邮箱@example.com"
 
 ---
 
-## 3️⃣ Unity Editor 2022.3 LTS — 游戏引擎
+## 3️⃣ Unity Editor 2022.3 LTS — 游戏引擎（这个很难下，直接官网下吧：https://docs.unity3d.com/2022.3/Documentation/Manual/WhatsNew2022LTS.html，选择2022.3 1.9那个）
 
 > ⚠️ **版本必须选 2022.3 LTS！** 不要选更新的版本，脚本兼容性不保证～
 
