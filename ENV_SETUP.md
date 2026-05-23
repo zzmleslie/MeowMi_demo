@@ -19,6 +19,7 @@
 （如果有c盘已经爆了的同学，也许可以试试把d盘合并到c盘？
 （基本的操作方法就是，先把d盘备份（可能需要一点时间，也许可以安装一些下载的tool加速），然后此电脑-管理-磁盘管理-d盘-删除卷，C盘-增加卷-选择未占用磁盘空间就可以了，回去再看看c盘的属性里面是否扩容就ok了）
 
+（新增，"需要 .NET SDK 才能获得完整的 C# 编辑体验，是否下载？" 可以去  https://dotnet.microsoft.com/download 手动下载 .NET SDK 8.0 或者直接用 winget 安装：winget install Microsoft.DotNet.SDK.8（需要有winget）.
 ## 🗺️ 安装顺序推荐
 
 ```

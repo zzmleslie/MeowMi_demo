@@ -1,0 +1,33 @@
+{
+  // === 🚫 彻底禁止所有 .NET 自动下载 ===
+  "dotnetAcquisitionExtension.enable": false,
+  "dotnetAcquisitionExtension.enableTelemetry": false,
+  "dotnetAcquisitionExtension.existingDotnetPath": [
+    { "extensionId": "ms-dotnettools.csharp", "path": "C:\\Program Files\\dotnet\\dotnet.exe" },
+    { "extensionId": "ms-dotnettools.csdevkit", "path": "C:\\Program Files\\dotnet\\dotnet.exe" }
+  ],
+
+  // C# Dev Kit 设置
+  "dotnet.defaultSolution": "disable",
+  "csharp.suppressDotnetInstallWarning": true,
+  "csharp.suppressHiddenDiagnostics": true,
+
+  // Omnisharp 设置
+  "omnisharp.useModernNet": false,
+  "omnisharp.path": "latest",
+  "omnisharp.dotnetPath": "C:\\Program Files\\dotnet\\dotnet.exe",
+
+  // === Unity 相关 ===
+  "files.exclude": {
+    "**/.git": true,
+    "**/*.meta": false,
+    "**/Library": true,
+    "**/Temp": true,
+    "**/obj": true,
+    "**/Build": true
+  },
+
+  // 编辑器
+  "editor.fontFamily": "'Courier New', 'Consolas', monospace",
+  "editor.fontSize": 14
+}

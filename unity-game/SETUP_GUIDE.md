@@ -112,34 +112,47 @@ Scene
 ## 📁 项目文件说明
 
 ```
-unity-game/
-├── Assets/
-│   ├── Scripts/
-│   │   ├── Core/GameManager.cs        ← 🎯 全局管理 + 数据类型
-│   │   ├── Player/PlayerController.cs ← 🐱 玩家小猫操控
-│   │   ├── NPC/CatNPC.cs              ← 🐈 猫咪 NPC 交互
-│   │   ├── Map/MapBuilder.cs          ← 🗺️ 地图动态生成
-│   │   ├── UI/CatInfoPanel.cs         ← 📱 猫咪信息弹窗
-│   │   ├── UI/CommunityPanel.cs       ← 💬 社区面板
-│   │   └── Camera/CameraFollow.cs     ← 📷 相机跟随
-│   └── Resources/
-│       └── Data/                      ← JSON 数据文件
-└── Packages/
-    └── manifest.json                  ← 依赖配置
+喵喵喵喵project/
+├── unity-game/                    ← 🎮 主项目
+│   ├── Assets/
+│   │   ├── Scripts/
+│   │   │   ├── Core/GameManager.cs          ← 🎯 全局管理 + 剧情进度
+│   │   │   ├── Player/PlayerController.cs   ← 🐱 玩家小猫操控
+│   │   │   ├── NPC/CatNPC.cs                ← 🐈 猫咪 NPC + 剧情对话触发
+│   │   │   ├── Dialogue/DialogueManager.cs  ← 💬 Undertale 对话框引擎
+│   │   │   ├── Map/MapBuilder.cs            ← 🗺️ 像素地图动态生成
+│   │   │   ├── UI/CatInfoPanel.cs           ← 📋 猫咪信息弹窗
+│   │   │   ├── UI/CommunityPanel.cs         ← 💬 社区面板
+│   │   │   └── Camera/CameraFollow.cs       ← 📷 相机跟随
+│   │   ├── Resources/Data/
+│   │   │   ├── dialogue-chapter0.json       ← 📖 序章对话
+│   │   │   ├── dialogue-chapter1.json       ← 📖 第1章对话
+│   │   │   ├── dialogue-chapter3.json       ← 📖 第3章对话
+│   │   │   ├── dialogue-chapter4.json       ← 📖 第4章对话
+│   │   │   ├── cats.json                    ← 🐱 猫咪档案（从 data/ 复制）
+│   │   │   └── map-data.json                ← 🗺️ 地图数据（从 data/ 复制）
+│   │   └── Packages/manifest.json           ← Unity 依赖配置
+│   └── SETUP_GUIDE.md                       ← 本文件
+├── data/
+│   ├── cats.json                ← 猫咪数据源
+│   └── map-data.json            ← 地图数据源
+├── scripts/                     ← Python 爬虫/预处理工具
+
+├── STORY.md                     ← 主线剧情设计文档
+└── README.md                    ← 项目概览
 ```
 
 ---
 
-## 🐍 猫咪数据获取
+## 🐍 猫咪数据
 
-在运行游戏前，先用 Python 爬虫获取真实猫咪数据：
+数据文件已在 `data/` 目录准备好，直接复制即可（见第六步）。
 
+如需更新真实猫咪数据，可运行爬虫：
 ```bash
 cd scripts
 pip install -r requirements.txt
-python scraper.py --gui
-# 或命令行模式：
-python scraper.py --json your_data.json --download
+python scraper.py --json your_data.json
 ```
 
 ---

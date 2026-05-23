@@ -371,7 +371,7 @@ async function main() {
   console.log('   1. 打开输出的 JSON 文件');
   console.log('   2. 手动设置每个建筑的 x, y 坐标');
   console.log('   3. 将其整合到 data/map-data.json 中');
-  console.log('   4. 在小程序中查看效果~');
+  console.log('   4. 导入 Unity 项目查看效果~');
   console.log('═══════════════════════════════════');
 }
 
