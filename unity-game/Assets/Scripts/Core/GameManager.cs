@@ -16,8 +16,15 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region 游戏状态
-    public enum GameState { Loading, Menu, Exploring, CatInfo, Community }
+    public enum GameState { Loading, Menu, Exploring, CatInfo, Community, Dialogue }
     public GameState CurrentState { get; private set; } = GameState.Loading;
+    #endregion
+
+    #region 剧情进度
+    public int CurrentChapter { get; private set; } = 0;
+    public HashSet<string> CompletedScenes { get; private set; } = new();
+    public Dictionary<string, int> Friendship { get; private set; } = new(); // catId → 好感度
+    public Dictionary<string, int> TalkCount { get; private set; } = new();   // catId → 对话次数
     #endregion
 
     #region 数据
@@ -61,7 +68,8 @@ public class GameManager : MonoBehaviour
         await LoadCatData();
         await LoadMapData();
         LoadDiscoveredFromPrefs();
-        Debug.Log($"✅ 数据加载完成: {AllCats.Count} 只猫咪");
+        LoadStoryProgress();
+        Debug.Log($"✅ 数据加载完成: {AllCats.Count} 只猫咪, 当前第{CurrentChapter}章");
     }
 
     async Task LoadCatData()
@@ -109,6 +117,91 @@ public class GameManager : MonoBehaviour
             var ids = JsonConvert.DeserializeObject<List<string>>(saved);
             DiscoveredCats = new HashSet<string>(ids);
         }
+    }
+
+    /// <summary>
+    /// 加载剧情进度 & 好感度
+    /// </summary>
+    void LoadStoryProgress()
+    {
+        CurrentChapter = PlayerPrefs.GetInt("StoryChapter", 0);
+
+        var scenesJson = PlayerPrefs.GetString("CompletedScenes", "");
+        if (!string.IsNullOrEmpty(scenesJson))
+            CompletedScenes = JsonConvert.DeserializeObject<HashSet<string>>(scenesJson) ?? new();
+
+        var friendshipJson = PlayerPrefs.GetString("Friendship", "");
+        if (!string.IsNullOrEmpty(friendshipJson))
+            Friendship = JsonConvert.DeserializeObject<Dictionary<string, int>>(friendshipJson) ?? new();
+
+        var talkJson = PlayerPrefs.GetString("TalkCount", "");
+        if (!string.IsNullOrEmpty(talkJson))
+            TalkCount = JsonConvert.DeserializeObject<Dictionary<string, int>>(talkJson) ?? new();
+    }
+
+    /// <summary>
+    /// 完成一个剧情场景
+    /// </summary>
+    public void CompleteScene(string sceneId)
+    {
+        CompletedScenes.Add(sceneId);
+        SaveStoryProgress();
+    }
+
+    /// <summary>
+    /// 推进章节
+    /// </summary>
+    public void AdvanceChapter()
+    {
+        CurrentChapter++;
+        PlayerPrefs.SetInt("StoryChapter", CurrentChapter);
+        PlayerPrefs.Save();
+    }
+
+    /// <summary>
+    /// 增加好感度
+    /// </summary>
+    public void AddFriendship(string catId, int amount)
+    {
+        if (!Friendship.ContainsKey(catId)) Friendship[catId] = 0;
+        Friendship[catId] += amount;
+        SaveStoryProgress();
+    }
+
+    /// <summary>
+    /// 记录对话次数
+    /// </summary>
+    public void RecordTalk(string catId)
+    {
+        if (!TalkCount.ContainsKey(catId)) TalkCount[catId] = 0;
+        TalkCount[catId]++;
+        SaveStoryProgress();
+    }
+
+    public int GetFriendship(string catId) =>
+        Friendship.ContainsKey(catId) ? Friendship[catId] : 0;
+
+    public int GetTalkCount(string catId) =>
+        TalkCount.ContainsKey(catId) ? TalkCount[catId] : 0;
+
+    void SaveStoryProgress()
+    {
+        PlayerPrefs.SetInt("StoryChapter", CurrentChapter);
+        PlayerPrefs.SetString("CompletedScenes", JsonConvert.SerializeObject(CompletedScenes));
+        PlayerPrefs.SetString("Friendship", JsonConvert.SerializeObject(Friendship));
+        PlayerPrefs.SetString("TalkCount", JsonConvert.SerializeObject(TalkCount));
+        PlayerPrefs.Save();
+    }
+
+    /// <summary>
+    /// 加载指定章节的对话JSON
+    /// </summary>
+    public DialogueScene LoadDialogueScene(string chapterId)
+    {
+        var textAsset = Resources.Load<TextAsset>($"Data/dialogue-{chapterId}");
+        if (textAsset != null)
+            return JsonConvert.DeserializeObject<DialogueScene>(textAsset.text);
+        return null;
     }
 
     #endregion

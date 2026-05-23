@@ -1,0 +1,211 @@
+{
+  "sceneId": "ch3_winter",
+  "chapterId": "chapter_3",
+  "lines": [
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "冬天是一夜之间来的。食堂后门的水碗结了薄冰。你舔了一下，舌头麻了半天。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "小橘",
+      "text": "没关系！明天就暖了！"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "你",
+      "text": "你怎么知道？"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "小橘",
+      "text": "我不知道！但我说\"明天就暖了\"的时候，今天就没那么冷了。"
+    },
+    {
+      "type": "trigger",
+      "speaker": "",
+      "text": "小橘生病"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "第二天。小橘没有站在纸箱口等你。他缩在角落里。你叫他，他睁了一下眼睛。只睁了一下。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "你看见他的眼白——平时你从来没注意过他有眼白，因为他总是在笑，眼睛眯成一条缝。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "你",
+      "text": "小橘。你看着我。小橘！"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "小橘",
+      "text": "我今天……不太想追蝴蝶。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "你",
+      "text": "我去找大黄。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "小橘",
+      "text": "别走——我只是想睡一会儿。等我睡着再走。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "他没有说\"我怕自己醒不过来\"。但你听出来了。你没有去找大黄。你趴在他旁边，用身体靠着他。他浑身发烫。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "大黄",
+      "text": "找人类。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "那是你第一次主动走向人类。你不知道怎么\"求助\"。你只能在路中间坐下来，对着你看到的第一个人叫。"
+    },
+    {
+      "type": "trigger",
+      "speaker": "",
+      "text": "玩家找人类帮忙"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "她蹲下来的动作很慢。伸出手的动作也很慢——她懂猫。你带她去纸箱。她明白了。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "女生",
+      "text": "别怕。很快就回来。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "小橘被送去了医院。女生付了医药费。你后来看到她中午没吃饭——她的饭钱变成了小橘的药。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "你不知道\"医药费\"是什么概念，但你知道那天中午她没有去食堂。"
+    },
+    {
+      "type": "trigger",
+      "speaker": "",
+      "text": "花花守夜"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "小橘回来的第三天，花花不见了。大黄找了三趟，你找了三趟。最后墨墨找到了她。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "她在图书馆后巷最深处。守着一窝刚刚睁眼的小猫——不是她生的。她把它们拢在肚子下面，用自己的体温暖着。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "大黄",
+      "text": "你三天没吃东西了。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "花花",
+      "text": "它们更饿。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "那天晚上你听见花花在轻轻哼——不是喵喵叫，是呼噜声。你以前以为猫只在舒服的时候才呼噜。花花教会你另一件事：猫在哄孩子的时候也呼噜。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "那是一种语言。翻译过来是——\"别怕，妈妈在。\""
+    },
+    {
+      "type": "trigger",
+      "speaker": "",
+      "text": "大黄告白"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "深冬的下午。阳光很好——那种看起来暖实际上没有温度的阳光。大黄趴在他最喜欢的台阶上。你发现他瘦了。不是一点，是很多。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "大黄",
+      "text": "小家伙——你来了快一年了吧。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "你",
+      "text": "嗯。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "大黄",
+      "text": "这个冬天——我可能过不去了。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "你没有说话。不是不想说——是说不出来。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "大黄",
+      "text": "别那个表情。我不是在交代遗言——只是想趁还有力气说话的时候，告诉你一些事。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "大黄",
+      "text": "第一件事：食堂大叔。你盯着他看超过五秒，他就会多放一勺。但不要用这招太多次——好人需要被珍惜。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "大黄",
+      "text": "第二件事：冬天往南边躲。南边有锅炉房，墙是热的——这是历代北大楼猫口口相传的秘密。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "他停了一下。风穿过梧桐枝，穿过你们俩之间的台阶。你觉得风永远吹不完。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "大黄",
+      "text": "第三件事——如果春天来了，我不在了——台阶归你。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "你的眼睛湿了。猫不轻易哭。但猫也不轻易说\"台阶归你\"。台阶在猫语里不是台阶。台阶是\"家\"。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "大黄",
+      "text": "我说完了。晒太阳。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "那天你趴在大黄旁边，一步也没有离开。太阳落山了，月光照在台阶上。大黄睡着了。你看了一整晚——看他的胸口是不是还在起伏。每一次起伏都像一份礼物。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "——第3章·冬天 完——"
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "sceneId": "ch4_spring",
+  "chapterId": "chapter_4",
+  "lines": [
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "春天不是自己来的。是每一只在冬天没闭上眼睛的猫，用最后一点力气叫来的。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "小橘",
+      "text": "看那棵树。以前没看过——不是没看见，是没看。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "你",
+      "text": "有什么区别？"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "小橘",
+      "text": "看见是眼睛的事。看是心里的事。我生病以前只在看蝴蝶、看吃的、看谁来了谁走了。从来没有——停在这里，看一棵树。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "小橘",
+      "text": "其实它很好看，你发现了吗？它在发芽。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "他顿了顿。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "小橘",
+      "text": "我也会发芽的。"
+    },
+    {
+      "type": "trigger",
+      "speaker": "",
+      "text": "新家"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "图书馆后巷。锅炉房的热气从墙根经过——这是历代北大楼猫口口相传的秘密。社团同学在墙根放了加固过的纸箱，外面画了猫的图案。很丑，但你能看出来那是猫。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "小橘",
+      "text": "这以后就是我们家了？"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "花花",
+      "text": "是。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "小橘",
+      "text": "永久的那种？"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "大黄",
+      "text": "没有什么是永久的。但在坏掉之前——是。"
+    },
+    {
+      "type": "trigger",
+      "speaker": "",
+      "text": "新生小猫"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "花花当妈妈了。四只小猫，三只活下来。她给每只起了名字——\"芽芽\"最小的，\"豆豆\"最胖的，\"跳跳\"最不安分的。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "花花",
+      "text": "你看它们。我觉得所有的过去——都在看它们。那些没活下来的小猫，那些没等到的春天。它们没有消失——它们变成了芽芽的耳朵、豆豆的肚子、跳跳的淘气。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "你",
+      "text": "你会给它们讲以前的事吗？"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "花花",
+      "text": "不。它们不需要背负我的故事。它们有自己的。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "花花",
+      "text": "这就是我想要的——让所有的悲剧，到我为止。"
+    },
+    {
+      "type": "trigger",
+      "speaker": "",
+      "text": "传承仪式"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "四月。夕阳把北大楼镀成金色。大黄在最高一级台阶上——他老了，但此刻眼神还是像国王。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "大黄",
+      "text": "你还记得第一天来这里——问了我什么吗？"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "你",
+      "text": "我问你——我可以留下来吗。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "大黄",
+      "text": "你知道我当时想什么？又来了一个。每年都有猫问同样的问题。但他们大多数——都走了。不是死了。是走了。你不一样。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "你",
+      "text": "哪里不一样？"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "大黄",
+      "text": "你问的不是\"这里有没有吃的\"——你问的是\"我可以留下来吗\"。这不是找食物。这是找归属。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "沉默了很久。夕阳移了一点点。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "大黄",
+      "text": "我已经是只老猫了。接下来——你是这里最合适的守护者。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "你",
+      "text": "我不行——"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "大黄",
+      "text": "你行。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "就两个字。但大黄从来不多解释——对的话不需要多。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "大黄",
+      "text": "你知道守护是什么吗？不是保护——你没那个能力。是记住。记住那个吃包子的男生，记住打电话哭的女生，记住食堂大叔多放的那勺鱼。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "大黄",
+      "text": "以后你还要记住小橘的蝴蝶、雪球的蹭头、花花叼给你的那片叶子。这些事如果没有猫记——就消失了。而消失，太可惜了。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "你",
+      "text": "所以你一直坐在这里——"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "大黄",
+      "text": "我一直在记。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "夕阳沉下去的时候，大黄把头靠在你肩上。很轻。但你觉得那是你一辈子扛过的最重的东西。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "——第4章·春天 完——"
+    }
+  ]
+}

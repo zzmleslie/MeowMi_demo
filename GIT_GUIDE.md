@@ -63,7 +63,7 @@ cat ~/.ssh/id_ed25519.pub
 # 3. 去 GitHub → Settings → SSH Keys → 粘贴保存
 
 # 4. 改用 SSH 地址
-git remote set-url origin git@github.com:zzmleslie/MeowMi_demo.git
+git remote set-url origin git@github.com:zzmleslie/meowmeowmeowmeow.git
 git push -u origin main
 ```
 
@@ -112,12 +112,12 @@ git push -u origin main
 
 ```bash
 # 克隆到本地
-git clone https://github.com/zzmleslie/MeowMi_demo.git
+git clone https://github.com/zzmleslie/meowmeowmeowmeow.git
 
 # 或 SSH（推荐）
-git clone git@github.com:zzmleslie/MeowMi_demo.git
+git clone git@github.com:zzmleslie/meowmeowmeowmeow.git
 
-cd MeowMi_demo
+cd meowmeowmeowmeow
 ```
 
 ### 📝 每次写代码前：同步队友更新

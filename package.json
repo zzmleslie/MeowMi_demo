@@ -1,7 +1,7 @@
 {
-  "name": "nanyang-cat-notes",
+  "name": "meowmeowmeowmeow",
   "version": "0.2.0",
-  "description": "南雍猫札 - 南京大学鼓楼校区猫咪探索游戏 (Unity + Python 数据工具链)",
+  "description": "喵喵喵喵 - 南京大学鼓楼校区猫咪探索游戏 (Unity + Python 数据工具链)",
   "main": "index.js",
   "scripts": {
     "preprocess": "node scripts/preprocess.js",

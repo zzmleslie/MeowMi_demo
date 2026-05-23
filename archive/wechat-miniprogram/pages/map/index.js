@@ -1,4 +1,4 @@
-// pages/map/index.js - 地图探索主逻辑
+// pages/map/index.js - 地图探索主逻辑（Undertale 对话版）
 const app = getApp();
 
 Page({
@@ -30,7 +30,10 @@ Page({
 
     // 统计
     totalCats: 0,
-    discoveredCount: 0
+    discoveredCount: 0,
+
+    // ★ 对话状态
+    dialogueActive: false
   },
 
   // Canvas 相关
@@ -39,6 +42,7 @@ Page({
   minimapCanvas: null,
   minimapCtx: null,
   mapRenderer: null,
+  dialogueBox: null,  // ★ Undertale 对话框
 
   // 游戏循环
   animFrameId: null,
@@ -47,6 +51,11 @@ Page({
   // 摇杆相关
   joystickBaseRadius: 50,
   joystickCenter: { x: 0, y: 0 },
+
+  // ★ 剧情进度
+  storyChapter: 0,
+  completedScenes: [],
+  sceneData: null,     // 当前对话场景数据
 
   onLoad() {
     const sysInfo = wx.getSystemInfoSync();
@@ -60,7 +69,9 @@ Page({
     this.initCanvas();
     this.initMinimap();
     this.loadMapRenderer();
+    this.loadDialogueSystem();     // ★ 加载对话系统
     this.loadStats();
+    this.loadStoryProgress();      // ★ 加载剧情进度
     this.startGameLoop();
   },
 
@@ -118,6 +129,123 @@ Page({
     }
   },
 
+  // ★ 加载 Undertale 对话系统
+  loadDialogueSystem() {
+    try {
+      const DialogueBox = require('../../utils/dialogue-box');
+      // 将在 ctx 可用后初始化
+      this._DialogueBoxClass = DialogueBox;
+    } catch (e) {
+      console.error('对话系统加载失败', e);
+    }
+  },
+
+  // ★ 加载剧情进度
+  loadStoryProgress() {
+    this.storyChapter = wx.getStorageSync('storyChapter') || 0;
+    this.completedScenes = wx.getStorageSync('completedScenes') || [];
+  },
+
+  // ★ 保存剧情进度
+  saveStoryProgress() {
+    wx.setStorageSync('storyChapter', this.storyChapter);
+    wx.setStorageSync('completedScenes', this.completedScenes);
+  },
+
+  // ★ 完成剧情场景
+  completeScene(sceneId) {
+    if (!this.completedScenes.includes(sceneId)) {
+      this.completedScenes.push(sceneId);
+      this.saveStoryProgress();
+    }
+  },
+
+  // ★ 加载场景对话数据
+  loadSceneData(chapterId) {
+    try {
+      return require(`../../data/dialogue-${chapterId}`);
+    } catch (e) {
+      // 尝试从全局数据加载
+      const dialogueData = app.globalData.dialogueData;
+      return dialogueData ? dialogueData[chapterId] : null;
+    }
+  },
+
+  // ★ 检查并触发剧情对话
+  checkAndTriggerStoryDialogue(catId) {
+    // 第0章：序章（与大黄初遇）
+    if (this.storyChapter === 0 && catId === 'cat_001' && !this.completedScenes.includes('ch0_prologue')) {
+      const scene = this.loadSceneData('chapter0');
+      if (scene) this.startDialogue(scene, 'ch0_prologue');
+      return true;
+    }
+
+    // 第1章：认识所有猫
+    if (this.storyChapter <= 1 && !this.completedScenes.includes('ch1_meet_all')) {
+      const scene = this.loadSceneData('chapter1');
+      if (scene) this.startDialogue(scene, 'ch1_meet_all');
+      return true;
+    }
+
+    return false;
+  },
+
+  // ★ 开始对话
+  startDialogue(scene, sceneId) {
+    if (!this.ctx) return;
+    if (!this.dialogueBox) {
+      this.dialogueBox = new this._DialogueBoxClass(this.ctx, this.data.canvasWidth, this.data.canvasHeight);
+    }
+
+    this.sceneData = scene;
+    this.currentSceneId = sceneId;
+    this.setData({ dialogueActive: true });
+
+    this.dialogueBox.start(scene,
+      // onEnd
+      () => {
+        this.setData({ dialogueActive: false });
+        if (sceneId) this.completeScene(sceneId);
+        this.sceneData = null;
+        this.currentSceneId = null;
+      },
+      // onTrigger - 处理场景触发事件
+      (triggerName) => {
+        console.log('剧情触发:', triggerName);
+        this.handleStoryTrigger(triggerName);
+      }
+    );
+  },
+
+  // ★ 处理剧情触发事件
+  handleStoryTrigger(triggerName) {
+    switch (triggerName) {
+      case 'goto_canteen':
+        // 引导玩家去食堂
+        this.setData({ userX: 600, userY: 700 });
+        break;
+      case 'meet_雪球':
+      case 'meet_小橘':
+      case 'meet_花花':
+      case 'meet_墨墨':
+      case 'meet_奶茶':
+        // 引导移动 + 解锁猫点
+        break;
+      case '小橘生病':
+      case '花花守夜':
+      case '大黄告白':
+        // 章节3关键事件标记
+        break;
+      case '新生小猫':
+      case '传承仪式':
+        // 章节4关键事件标记
+        break;
+      case '玩家找人类帮忙':
+        wx.showToast({ title: '你在路中间坐下，对着路过的女生叫了一声...', icon: 'none', duration: 2500 });
+        break;
+    }
+  },
+
   loadStats() {
     const cats = app.globalData.cats || [];
     const discovered = wx.getStorageSync('discoveredCats') || [];
@@ -141,6 +269,12 @@ Page({
     if (!this.lastTime) { this.lastTime = timestamp; return; }
     const dt = (timestamp - this.lastTime) / 1000;
     this.lastTime = timestamp;
+
+    // ★ 对话激活时暂停移动
+    if (this.data.dialogueActive) {
+      if (this.dialogueBox) this.dialogueBox.update(dt);
+      return;
+    }
 
     if (this.data.joystickActive) {
       this.applyJoystickMovement(dt);
@@ -220,6 +354,11 @@ Page({
 
     // 渲染用户小猫
     this.renderPlayer(ctx, w, h);
+
+    // ★ 渲染 Undertale 对话框（最上层）
+    if (this.data.dialogueActive && this.dialogueBox) {
+      this.dialogueBox.render();
+    }
 
     // 渲染小地图
     this.renderMinimap();
@@ -398,17 +537,39 @@ Page({
     this.setData({ joystickX: dx, joystickY: dy });
   },
 
-  // 地图拖拽
+  // 地图拖拽 & ★ 对话点击
   onTouchStart(e) {
-    // 记录拖拽起始点（用于实现地图拖拽，此处暂简化）
+    // 对话激活时：点击推进对话
+    if (this.data.dialogueActive && this.dialogueBox) {
+      const touch = e.touches[0];
+      if (touch) this.dialogueBox.handleTap(touch.x, touch.y);
+      return;
+    }
+    // 记录拖拽起始点
   },
-  onTouchMove(e) {},
-  onTouchEnd(e) {},
+  onTouchMove(e) {
+    if (this.data.dialogueActive) return;
+  },
+  onTouchEnd(e) {
+    // 对话激活时：点击推进对话
+    if (this.data.dialogueActive && this.dialogueBox) {
+      const touch = e.changedTouches[0];
+      if (touch) this.dialogueBox.handleTap(touch.x, touch.y);
+      return;
+    }
+  },
 
   // ==================== 猫咪交互 ====================
   openCatDetail() {
     const cat = this.data.nearbyCat;
     if (!cat) return;
+
+    // ★ 优先检查剧情对话
+    if (this.checkAndTriggerStoryDialogue(cat.id)) {
+      this.setData({ discoverVisible: false });
+      return;
+    }
+
     this.setData({ modalVisible: true, activeCat: cat, discoverVisible: false });
     app.discoverCat(cat.id);
     this.loadStats();

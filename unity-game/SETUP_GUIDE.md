@@ -1,4 +1,4 @@
-# 🐱 南雍猫札 Unity 项目 - 安装指南
+# 🐱 喵喵喵喵 Unity 项目 - 安装指南
 
 ## 📋 环境要求
 
@@ -25,7 +25,7 @@
 
 1. Unity Hub → New Project
 2. 模板选择：**2D Core**
-3. 项目名：`NanyangCatNotes`
+3. 项目名：`MeowMeowMeowMeow`
 4. 路径：选你的工作目录
 
 ### 第三步：导入代码

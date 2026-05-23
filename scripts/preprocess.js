@@ -2,26 +2,22 @@
 
 /**
  * ============================================
- *  南雍猫札 - 校园照片预处理脚本
+ *  喵喵喵喵 - 像素艺术预处理脚本 (Undertale 风格)
  *  ============================================
  * 
- * 功能：将真实校园照片处理为结构化地图数据
+ * 功能：将真实校园照片处理为 Undertale 像素RPG风格地图数据
  * 
  * 处理流程：
- *   1. 边缘检测 → 提取建筑轮廓
- *   2. 主导色提取 → 获取建筑真实颜色
- *   3. 轮廓简化 → Douglas-Peucker 算法
- *   4. 输出 → JSON 地图数据文件
+ *   1. 像素化降采样 → 缩小图像获得像素块效果
+ *   2. 边缘检测 → 提取像素化建筑轮廓
+ *   3. 主导色提取 → 获取像素化纯色
+ *   4. 轮廓简化 → Douglas-Peucker 算法（像素量化）
+ *   5. 输出 → JSON 地图数据文件
  * 
  * 使用方法：
  *   1. 将校园照片放入 ./photos/ 文件夹
  *   2. 运行: node scripts/preprocess.js
  *   3. 输出: ./output/map-data-generated.json
- * 
- * 技术栈：
- *   - sharp: 高性能图像处理
- *   - 自实现 Douglas-Peucker 轮廓简化
- *   - K-means 颜色聚类（简化版）
  * 
  * 安装依赖: npm install sharp
  */
@@ -32,25 +28,25 @@ const sharp = require('sharp');
 
 // ==================== 配置 ====================
 const CONFIG = {
-  photoDir: path.join(__dirname, '..', 'photos'),      // 照片输入目录
-  outputDir: path.join(__dirname, '..', 'output'),      // 输出目录
+  photoDir: path.join(__dirname, '..', 'photos'),
+  outputDir: path.join(__dirname, '..', 'output'),
   outputFile: 'map-data-generated.json',
   
-  // 图像处理参数
-  edgeThreshold: 50,        // 边缘检测阈值 (0-255)
-  blurSigma: 2,             // 高斯模糊程度
-  minContourArea: 200,      // 最小轮廓面积（像素），过滤噪点
-  simplifyEpsilon: 3,       // Douglas-Peucker 简化容差
+  // 像素艺术处理参数
+  pixelScale: 4,            // 缩小倍数（值越大像素块越大）
+  edgeThreshold: 60,        // 边缘检测阈值（略高=更清晰像素边）
+  blurSigma: 1,             // 轻微模糊（保持像素锐度）
+  minContourArea: 300,      // 最小轮廓面积
+  simplifyEpsilon: 4,       // 轮廓简化容差（像素量化）
   
   // 颜色聚类参数
-  colorClusterCount: 4,     // 主导色数量
+  colorClusterCount: 3,     // 主导色数量（更少=更纯的像素色）
 };
 
 // ==================== 工具函数 ====================
 
 /**
- * Douglas-Peucker 轮廓简化算法
- * 将密集的边缘点简化为少量关键控制点
+ * Douglas-Peucker 轮廓简化算法（像素量化版）
  */
 function douglasPeucker(points, epsilon) {
   if (points.length <= 2) return points;
@@ -60,7 +56,6 @@ function douglasPeucker(points, epsilon) {
   const first = points[0];
   const last = points[points.length - 1];
 
-  // 找到离首尾连线最远的点
   for (let i = 1; i < points.length - 1; i++) {
     const dist = perpendicularDistance(points[i], first, last);
     if (dist > maxDist) {
@@ -69,7 +64,6 @@ function douglasPeucker(points, epsilon) {
     }
   }
 
-  // 如果最远距离大于容差，递归简化
   if (maxDist > epsilon) {
     const left = douglasPeucker(points.slice(0, maxIndex + 1), epsilon);
     const right = douglasPeucker(points.slice(maxIndex), epsilon);
@@ -93,8 +87,15 @@ function perpendicularDistance(point, lineStart, lineEnd) {
 }
 
 /**
+ * 像素量化坐标（对齐到像素网格）
+ */
+function snapToPixelGrid(coord, gridSize = 4) {
+  return Math.round(coord / gridSize) * gridSize;
+}
+
+/**
  * 简化版 K-means 颜色聚类
- * 从图像像素中提取主导色
+ * 提取像素风格主导色（更少的颜色=更纯的像素色）
  */
 function extractDominantColors(pixels, k, maxIterations = 10) {
   // 随机初始化 k 个中心点
@@ -303,7 +304,7 @@ async function processPhoto(filePath, fileName) {
 // ==================== 主流程 ====================
 async function main() {
   console.log('╔══════════════════════════════════╗');
-  console.log('║   🐱 南雍猫札 - 照片预处理器  ║');
+  console.log('║   🐱 喵喵喵喵 - 照片预处理器  ║');
   console.log('╚══════════════════════════════════╝');
   console.log('');
 

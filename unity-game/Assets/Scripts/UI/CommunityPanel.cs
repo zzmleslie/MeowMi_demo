@@ -5,8 +5,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 /// <summary>
-/// 社区模块 - 晒照/讨论/捐款/志愿者
-/// 点击主界面图标切换到社区，再点击回到探索
+/// 社区模块 — Undertale 复古终端风格
+/// 晒照/讨论/捐款/志愿者
 /// </summary>
 public class CommunityPanel : MonoBehaviour
 {
@@ -33,6 +33,10 @@ public class CommunityPanel : MonoBehaviour
     string _currentTab = "photo";
     bool _isVisible;
 
+    // Undertale 配色
+    readonly Color _activeColor = new(1f, 0f, 0f);       // 红色 ♥
+    readonly Color _inactiveColor = new(0.67f, 0.67f, 0.67f); // 灰色
+
     void Start()
     {
         panelRoot.SetActive(false);
@@ -45,7 +49,11 @@ public class CommunityPanel : MonoBehaviour
         cancelPostBtn?.onClick.AddListener(() => createPostPanel.SetActive(false));
         submitPostBtn?.onClick.AddListener(SubmitPost);
 
-        // 监听状态切换（主界面图标点击）
+        // Undertale 风格按钮文字
+        if (createPostBtn) createPostBtn.GetComponentInChildren<TMP_Text>().text = "* 发帖";
+        if (submitPostBtn) submitPostBtn.GetComponentInChildren<TMP_Text>().text = "* 确定";
+        if (cancelPostBtn) cancelPostBtn.GetComponentInChildren<TMP_Text>().text = "* 取消";
+
         GameManager.Instance.OnStateChanged += OnStateChanged;
     }
 
@@ -90,18 +98,15 @@ public class CommunityPanel : MonoBehaviour
 
     void UpdateTabHighlights()
     {
-        // 高亮当前 Tab（简化版：改变颜色）
-        Color active = new(0.83f, 0.47f, 0.42f);
-        Color inactive = new(0.55f, 0.49f, 0.42f);
-        photoTab.targetGraphic.color = _currentTab == "photo" ? active : inactive;
-        discussTab.targetGraphic.color = _currentTab == "discussion" ? active : inactive;
-        donateTab.targetGraphic.color = _currentTab == "donation" ? active : inactive;
-        volunteerTab.targetGraphic.color = _currentTab == "volunteer" ? active : inactive;
+        // Undertale 风格：选中=红色♥，未选中=灰色
+        photoTab.targetGraphic.color = _currentTab == "photo" ? _activeColor : _inactiveColor;
+        discussTab.targetGraphic.color = _currentTab == "discussion" ? _activeColor : _inactiveColor;
+        donateTab.targetGraphic.color = _currentTab == "donation" ? _activeColor : _inactiveColor;
+        volunteerTab.targetGraphic.color = _currentTab == "volunteer" ? _activeColor : _inactiveColor;
     }
 
     async void LoadPosts()
     {
-        // 清空列表
         foreach (Transform t in postListContent) Destroy(t.gameObject);
 
         var posts = await FetchPosts(_currentTab);
@@ -109,32 +114,29 @@ public class CommunityPanel : MonoBehaviour
         {
             var go = Instantiate(postPrefab, postListContent);
             var texts = go.GetComponentsInChildren<TMP_Text>();
-            // 简化：取第一个Text当标题，第二个当内容
-            if (texts.Length > 0) texts[0].text = post.title;
-            if (texts.Length > 1) texts[1].text = post.content;
+            if (texts.Length > 0) texts[0].text = $"* {post.title}";
+            if (texts.Length > 1) texts[1].text = $"  {post.content}";
         }
     }
 
     async Task<List<PostData>> FetchPosts(string tab)
     {
-        // TODO: 对接真实 API
         await Task.Delay(100);
         return new List<PostData>
         {
-            new() { title = "大黄晒太阳了！", content = "今天在北大楼看到大黄~ ☀️🐱", type = "photo" },
-            new() { title = "绝育志愿者招募", content = "这周末组织绝育活动，需要3名同学帮忙！🙋", type = "volunteer" },
-            new() { title = "小橘绝育捐款", content = "已筹集 ¥320 / ¥500 💰", type = "donation" }
+            new() { title = "大黄晒太阳了！", content = "* 今天在北大楼看到大黄~ ☀️🐱", type = "photo" },
+            new() { title = "绝育志愿者招募", content = "* 这周末组织绝育活动，需要3名同学帮忙！", type = "volunteer" },
+            new() { title = "小橘绝育捐款", content = "* 已筹集 ¥320 / ¥500 💰", type = "donation" }
         }.FindAll(p => p.type == _currentTab);
     }
 
     async void SubmitPost()
     {
         if (string.IsNullOrWhiteSpace(postInput.text)) return;
-        // TODO: 发送到后端 API
-        Debug.Log($"📝 发帖: {postInput.text}");
+        Debug.Log($"* 发帖: {postInput.text}");
         postInput.text = "";
         createPostPanel.SetActive(false);
-        GameManager.Instance?.TriggerToast("发布成功！🐱");
+        GameManager.Instance?.TriggerToast("* 发布成功！♪");
         LoadPosts();
     }
 

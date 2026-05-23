@@ -1,9 +1,9 @@
 using UnityEngine;
 
 /// <summary>
-/// 玩家小猫控制器
+/// 玩家小猫控制器 — Undertale 像素RPG风格
 /// 支持键盘 WASD + 虚拟摇杆（移动端）
-/// 靠近猫咪NPC时自动检测碰撞
+/// 像素移动（4方向）+ ♥ 灵魂之心标记
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -17,10 +17,13 @@ public class PlayerController : MonoBehaviour
     public float discoveryRadius = 3f;
     public LayerMask catSpotLayer;
 
-    [Header("精灵动画")]
+    [Header("精灵动画 — 像素4方向")]
     public SpriteRenderer spriteRenderer;
     public Sprite[] idleSprites;      // 0=down, 1=up, 2=left, 3=right
     public Sprite[] walkSprites;      // 同上排列 × 每向4帧 = 16张
+
+    [Header("Undertale 灵魂之心")]
+    public GameObject heartSoul;       // ♥ 红色灵魂标记（跟随玩家）
     #endregion
 
     #region 私有
@@ -41,6 +44,9 @@ public class PlayerController : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _rb.gravityScale = 0; // 2D 俯视图不需要重力
         if (!spriteRenderer) spriteRenderer = GetComponent<SpriteRenderer>();
+        // 像素渲染
+        if (spriteRenderer && spriteRenderer.sprite)
+            spriteRenderer.sprite.texture.filterMode = FilterMode.Point;
     }
 
     void Update()
@@ -48,6 +54,7 @@ public class PlayerController : MonoBehaviour
         HandleInput();
         UpdateAnimation();
         CheckCatProximity();
+        UpdateHeartSoul();
     }
 
     void FixedUpdate()
@@ -58,7 +65,7 @@ public class PlayerController : MonoBehaviour
         _isMoving = input.magnitude > 0.05f;
         if (_isMoving)
         {
-            // 更新朝向
+            // Undertale 风格：像素化移动方向（优先4方向）
             if (Mathf.Abs(input.x) > Mathf.Abs(input.y))
                 _facingDir = input.x > 0 ? "right" : "left";
             else
@@ -76,6 +83,17 @@ public class PlayerController : MonoBehaviour
         pos.x = Mathf.Clamp(pos.x, 0, mapBounds.x);
         pos.y = Mathf.Clamp(pos.y, 0, mapBounds.y);
         transform.position = pos;
+    }
+    #endregion
+
+    #region 灵魂之心
+    void UpdateHeartSoul()
+    {
+        if (!heartSoul) return;
+        // ♥ 跟随玩家，带微小漂浮
+        heartSoul.transform.position = transform.position + Vector3.up * 1.5f;
+        float floatOffset = Mathf.Sin(Time.time * 3f) * 0.15f;
+        heartSoul.transform.localPosition += Vector3.up * floatOffset;
     }
     #endregion
 
@@ -123,7 +141,7 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    #region 动画
+    #region 动画 — 像素4方向逐帧
     void UpdateAnimation()
     {
         if (!spriteRenderer) return;

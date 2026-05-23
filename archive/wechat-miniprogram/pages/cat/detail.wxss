@@ -1,26 +1,26 @@
-/* pages/cat/detail.wxss */
+/* pages/cat/detail.wxss — Undertale 对话框风格猫咪档案 */
 .detail-page {
   padding-bottom: 60rpx;
-  background: var(--color-bg);
+  background: #000000;
 }
 
-/* === 头部 === */
+/* === 头部 — 黑色背景 + 白色边框对话框 === */
 .detail-header {
   display: flex;
   align-items: center;
   gap: 24rpx;
   padding: 40rpx 32rpx;
-  background: linear-gradient(135deg, #FFF8F0, #FBEBD9);
+  background: #000000;
+  border-bottom: 3rpx solid #FFFFFF;
 }
 
 .header-photo-wrap {
   flex-shrink: 0;
   width: 180rpx;
   height: 180rpx;
-  border-radius: 50%;
   overflow: hidden;
-  border: 4rpx solid var(--color-border);
-  box-shadow: var(--shadow-float);
+  border: 3rpx solid #FFFFFF;
+  image-rendering: pixelated;
 }
 
 .header-photo {
@@ -36,14 +36,15 @@
   font-family: var(--font-title);
   font-size: 44rpx;
   font-weight: bold;
-  color: var(--color-text);
+  color: #FFFFFF;
 }
 
 .header-nickname {
   display: block;
   font-size: 28rpx;
-  color: var(--color-primary);
+  color: #FF0000;
   margin-top: 4rpx;
+  font-family: var(--font-pixel);
 }
 
 .header-tags {
@@ -54,31 +55,31 @@
 }
 
 .tag {
-  font-size: 22rpx;
-  color: var(--color-primary);
-  background: rgba(212, 119, 107, 0.1);
-  border: 1rpx solid rgba(212, 119, 107, 0.2);
+  font-size: 20rpx;
+  color: #FFFFFF;
+  background: #000000;
+  border: 2rpx solid #FF0000;
   padding: 4rpx 16rpx;
-  border-radius: 20rpx;
+  font-family: var(--font-pixel);
 }
 
-/* === 通用区块 === */
+/* === 通用区块 — Undertale 对话框 === */
 .section {
   margin: 24rpx 32rpx;
-  background: var(--color-bg-card);
-  border-radius: var(--radius-md);
+  background: #000000;
+  border: 3rpx solid #FFFFFF;
   padding: 28rpx;
-  box-shadow: var(--shadow-card);
 }
 
 .section-title {
   font-size: 30rpx;
   font-weight: 600;
-  color: var(--color-text);
+  color: #FF0000;
   display: block;
   margin-bottom: 20rpx;
   padding-bottom: 12rpx;
-  border-bottom: 1rpx solid var(--color-border);
+  border-bottom: 2rpx solid #FFFFFF;
+  font-family: var(--font-pixel);
 }
 
 /* === 信息网格 === */
@@ -91,20 +92,22 @@
 .info-cell {
   text-align: center;
   padding: 12rpx 8rpx;
+  border: 2rpx solid #333333;
 }
 
 .cell-icon { font-size: 36rpx; display: block; margin-bottom: 4rpx; }
-.cell-label { font-size: 22rpx; color: var(--color-text-light); display: block; }
-.cell-value { font-size: 24rpx; font-weight: 600; color: var(--color-text); display: block; margin-top: 2rpx; }
+.cell-label { font-size: 20rpx; color: #AAAAAA; display: block; font-family: var(--font-pixel); }
+.cell-value { font-size: 22rpx; font-weight: 600; color: #FFFFFF; display: block; margin-top: 2rpx; font-family: var(--font-pixel); }
 
-.status-ok { color: var(--color-green) !important; }
-.status-warn { color: #E8A87C !important; }
+.status-ok { color: #00E500 !important; }
+.status-warn { color: #FFD700 !important; }
 
 /* === 描述 === */
 .desc-text, .loc-text {
   font-size: 28rpx;
-  color: var(--color-text);
+  color: #FFFFFF;
   line-height: 1.8;
+  font-family: var(--font-pixel);
 }
 
 /* === 亲属关系 === */
@@ -115,8 +118,8 @@
 }
 
 .family-node {
-  background: #FDF1E6;
-  border-radius: var(--radius-sm);
+  background: #000000;
+  border: 2rpx solid #FFFFFF;
   padding: 12rpx 20rpx;
   display: flex;
   align-items: center;
@@ -124,21 +127,24 @@
 }
 
 .family-relation {
-  font-size: 22rpx;
-  color: var(--color-text-light);
+  font-size: 20rpx;
+  color: #AAAAAA;
+  font-family: var(--font-pixel);
 }
 
 .family-name {
-  font-size: 26rpx;
+  font-size: 24rpx;
   font-weight: 600;
-  color: var(--color-primary);
+  color: #FF0000;
+  font-family: var(--font-pixel);
 }
 
 .family-hint {
   display: block;
-  font-size: 22rpx;
-  color: #CCC;
+  font-size: 20rpx;
+  color: #666666;
   margin-top: 12rpx;
+  font-family: var(--font-pixel);
 }
 
 /* === 照片区 === */
@@ -150,14 +156,13 @@
   width: 100%;
   padding: 50rpx 0;
   text-align: center;
-  background: #FAFAF8;
-  border-radius: var(--radius-sm);
-  border: 2rpx dashed var(--color-border);
+  background: #000000;
+  border: 2rpx dashed #666666;
 }
 
 .empty-icon { font-size: 60rpx; display: block; }
-.empty-text { font-size: 26rpx; color: var(--color-text-light); display: block; margin-top: 12rpx; }
-.empty-hint { font-size: 22rpx; color: #CCC; display: block; margin-top: 6rpx; }
+.empty-text { font-size: 24rpx; color: #AAAAAA; display: block; margin-top: 12rpx; font-family: var(--font-pixel); }
+.empty-hint { font-size: 20rpx; color: #666666; display: block; margin-top: 6rpx; font-family: var(--font-pixel); }
 
 /* === 返回按钮 === */
 .back-btn-wrap { padding: 30rpx 32rpx; }
@@ -165,12 +170,12 @@
 .back-btn {
   width: 100%;
   height: 88rpx;
-  background: var(--color-primary);
-  color: #FFF;
-  border-radius: 44rpx;
+  background: #FF0000;
+  color: #FFFFFF;
   font-size: 30rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
+  border: 3rpx solid #FFFFFF;
+  font-family: var(--font-pixel);
 }

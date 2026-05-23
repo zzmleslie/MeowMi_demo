@@ -1,7 +1,7 @@
 {
   "mapName": "南京大学鼓楼校区",
   "mapSize": { "width": 2000, "height": 2000 },
-  "description": "基于真实校园布局的手绘风格地图数据",
+  "description": "Undertale 像素RPG风格校园地图",
 
   "buildings": [
     {
@@ -9,8 +9,8 @@
       "name": "北大楼",
       "x": 800, "y": 300,
       "w": 180, "h": 130,
-      "color": "#C4B5A5",
-      "strokeColor": "#8B7355",
+      "color": "#6B5B8A",
+      "strokeColor": "#000000",
       "contour": [
         [800, 300], [980, 300], [980, 340], [950, 340],
         [950, 430], [830, 430], [830, 340], [800, 340]
@@ -21,56 +21,56 @@
       "name": "大礼堂",
       "x": 900, "y": 500,
       "w": 160, "h": 120,
-      "color": "#D4C4A8",
-      "strokeColor": "#8B7355"
+      "color": "#7B6B5A",
+      "strokeColor": "#000000"
     },
     {
       "id": "bld_03",
       "name": "图书馆",
       "x": 500, "y": 400,
       "w": 200, "h": 100,
-      "color": "#D0C0B0",
-      "strokeColor": "#8B7355"
+      "color": "#5A7B8A",
+      "strokeColor": "#000000"
     },
     {
       "id": "bld_04",
       "name": "教学楼",
       "x": 1100, "y": 350,
       "w": 160, "h": 110,
-      "color": "#CCC0B0",
-      "strokeColor": "#8B7355"
+      "color": "#8A7B6B",
+      "strokeColor": "#000000"
     },
     {
       "id": "bld_05",
       "name": "食堂",
       "x": 600, "y": 700,
       "w": 140, "h": 90,
-      "color": "#E0D0B8",
-      "strokeColor": "#8B7355"
+      "color": "#8A6B5A",
+      "strokeColor": "#000000"
     },
     {
       "id": "bld_06",
       "name": "体育馆",
       "x": 1300, "y": 600,
       "w": 150, "h": 120,
-      "color": "#C8BCAA",
-      "strokeColor": "#8B7355"
+      "color": "#5A6B7B",
+      "strokeColor": "#000000"
     },
     {
       "id": "bld_07",
       "name": "宿舍区",
       "x": 400, "y": 800,
       "w": 250, "h": 80,
-      "color": "#E8DDC8",
-      "strokeColor": "#8B7355"
+      "color": "#7B8A6B",
+      "strokeColor": "#000000"
     },
     {
       "id": "bld_08",
       "name": "行政楼",
       "x": 750, "y": 150,
       "w": 120, "h": 90,
-      "color": "#D8CCB8",
-      "strokeColor": "#8B7355"
+      "color": "#6B6B7B",
+      "strokeColor": "#000000"
     }
   ],
 

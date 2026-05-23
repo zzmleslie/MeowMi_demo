@@ -3,8 +3,8 @@ using UnityEngine.UI;
 using TMPro;
 
 /// <summary>
-/// 猫咪信息弹窗 - 展示完整猫咪档案
-/// 弹出动画 + 照片/性别/花色/性格/亲属关系
+/// 猫咪信息弹窗 — Undertale 对话框风格
+/// 黑色背景 + 白色边框 + 像素字体 + ♥ 红色点缀
 /// </summary>
 public class CatInfoPanel : MonoBehaviour
 {
@@ -27,12 +27,12 @@ public class CatInfoPanel : MonoBehaviour
     public Transform tagsContainer;
     public GameObject tagPrefab;
     public Transform relationsContainer;
-    public GameObject relationPrefab;  // 预制件，包含 TMP_Text 组件
+    public GameObject relationPrefab;
 
-    [Header("按钮")]
+    [Header("Undertale 按钮")]
     public Button closeBtn;
     public Button locateBtn;       // "去地图找猫"
-    public Button chatBtn;         // AI 聊天（预留）
+    public Button chatBtn;         // AI 聊天
     #endregion
 
     CatData _currentCat;
@@ -47,6 +47,11 @@ public class CatInfoPanel : MonoBehaviour
         closeBtn?.onClick.AddListener(Hide);
         locateBtn?.onClick.AddListener(OnLocate);
         maskBg?.GetComponent<Button>()?.onClick.AddListener(Hide);
+
+        // Undertale 风格按钮文字
+        if (closeBtn) closeBtn.GetComponentInChildren<TMP_Text>().text = "* 关闭";
+        if (locateBtn) locateBtn.GetComponentInChildren<TMP_Text>().text = "* 导航";
+        if (chatBtn) chatBtn.GetComponentInChildren<TMP_Text>().text = "* 对话";
 
         GameManager.Instance.OnCatInteract += Show;
     }
@@ -66,7 +71,7 @@ public class CatInfoPanel : MonoBehaviour
         panelRoot.SetActive(true);
         GameManager.Instance.SetState(GameManager.GameState.CatInfo);
 
-        // 弹出动画
+        // Undertale 弹出动画：从下方滑入
         StopAllCoroutines();
         StartCoroutine(AnimateShow());
     }
@@ -81,12 +86,11 @@ public class CatInfoPanel : MonoBehaviour
     {
         float t = 0;
         Vector3 start = _hiddenPos;
-        while (t < 0.35f)
+        while (t < 0.3f)
         {
             t += Time.deltaTime;
-            float e = 1f - Mathf.Pow(1f - t / 0.35f, 3); // easeOut
+            float e = 1f - Mathf.Pow(1f - t / 0.3f, 2);
             panelRoot.transform.localPosition = Vector3.Lerp(start, _shownPos, e);
-            panelRoot.transform.localScale = Vector3.Lerp(Vector3.one * 0.8f, Vector3.one, e);
             yield return null;
         }
     }
@@ -94,10 +98,10 @@ public class CatInfoPanel : MonoBehaviour
     System.Collections.IEnumerator AnimateHide()
     {
         float t = 0;
-        while (t < 0.25f)
+        while (t < 0.2f)
         {
             t += Time.deltaTime;
-            panelRoot.transform.localPosition = Vector3.Lerp(_shownPos, _hiddenPos, t / 0.25f);
+            panelRoot.transform.localPosition = Vector3.Lerp(_shownPos, _hiddenPos, t / 0.2f);
             yield return null;
         }
         panelRoot.SetActive(false);
@@ -108,21 +112,21 @@ public class CatInfoPanel : MonoBehaviour
     {
         var c = _currentCat;
 
-        nameText.text = c.name;
+        // Undertale 风格：星号前缀对话文本
+        nameText.text = $"* {c.name}";
         nicknameText.text = string.IsNullOrEmpty(c.nickname) ? "" : $"「{c.nickname}」";
         nicknameText.gameObject.SetActive(!string.IsNullOrEmpty(c.nickname));
-        genderText.text = c.GenderDisplay;
-        colorText.text = c.color ?? "未知";
-        neuteredText.text = c.NeuteredDisplay;
-        neuteredText.color = c.neutered ? new Color(0.48f, 0.63f, 0.48f) : new Color(0.91f, 0.66f, 0.49f);
-        adoptedText.text = c.AdoptedDisplay;
-        descText.text = c.description ?? "暂无描述~";
-        hangoutText.text = c.hangout ?? "";
-        firstSeenText.text = c.firstSeen ?? "未知";
+        genderText.text = $"* 性别: {c.GenderDisplay}";
+        colorText.text = $"* 花色: {c.color ?? "未知"}";
+        neuteredText.text = $"* 绝育: {c.NeuteredDisplay}";
+        // Undertale 颜色：绿色=已绝育（HP色），黄色=未绝育（SAVE色）
+        neuteredText.color = c.neutered ? new Color(0, 0.9f, 0) : new Color(1, 0.84f, 0);
+        adoptedText.text = $"* 收养: {c.AdoptedDisplay}";
+        descText.text = $"* {c.description ?? "暂无描述~"}";
+        hangoutText.text = string.IsNullOrEmpty(c.hangout) ? "" : $"* 常出没: {c.hangout}";
+        firstSeenText.text = $"* 首次目击: {c.firstSeen ?? "未知"}";
 
-        // 标签
         BuildTags(c.tags);
-        // 亲属关系
         BuildRelations(c.relations);
     }
 
@@ -133,7 +137,7 @@ public class CatInfoPanel : MonoBehaviour
         foreach (var tag in tags)
         {
             var go = Instantiate(tagPrefab, tagsContainer);
-            go.GetComponentInChildren<TMP_Text>().text = tag;
+            go.GetComponentInChildren<TMP_Text>().text = $"# {tag}";
         }
     }
 
@@ -145,14 +149,13 @@ public class CatInfoPanel : MonoBehaviour
         {
             var go = Instantiate(relationPrefab, relationsContainer);
             var txt = go.GetComponent<TMP_Text>();
-            if (txt) txt.text = $"{r.relation}：{r.name}";
+            if (txt) txt.text = $"♥ {r.relation}：{r.name}";
         }
     }
 
     void OnLocate()
     {
-        // TODO: 发送地图定位事件，移动相机到猫咪出没点
-        GameManager.Instance?.TriggerToast($"📍 正在导航到 {_currentCat.name} 的位置~");
+        GameManager.Instance?.TriggerToast($"* 正在导航到 {_currentCat.name} 的位置...");
         Hide();
     }
 }

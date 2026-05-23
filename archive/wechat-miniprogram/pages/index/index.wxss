@@ -1,11 +1,33 @@
-/* pages/index/index.wxss */
+/* pages/index/index.wxss — Undertale 标题画面风格 */
 .home-page {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 80rpx;
   min-height: 100vh;
-  background: linear-gradient(180deg, #FFF8F0 0%, #FDF1E6 40%, #FBEBD9 100%);
+  background: #000000;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 背景像素星星（Undertale 标题画面星空） */
+.home-page::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(1rpx 1rpx at 10% 20%, #FFFFFF 50%, transparent 50%),
+    radial-gradient(1rpx 1rpx at 25% 45%, #FFFFFF 50%, transparent 50%),
+    radial-gradient(1rpx 1rpx at 40% 15%, #FFFFFF 50%, transparent 50%),
+    radial-gradient(1rpx 1rpx at 55% 60%, #FFFFFF 50%, transparent 50%),
+    radial-gradient(1rpx 1rpx at 70% 30%, #FFFFFF 50%, transparent 50%),
+    radial-gradient(1rpx 1rpx at 85% 50%, #FFFFFF 50%, transparent 50%),
+    radial-gradient(1rpx 1rpx at 15% 75%, #FFFFFF 50%, transparent 50%),
+    radial-gradient(1rpx 1rpx at 60% 85%, #FFFFFF 50%, transparent 50%),
+    radial-gradient(1rpx 1rpx at 90% 10%, #FFFFFF 50%, transparent 50%),
+    radial-gradient(1rpx 1rpx at 33% 80%, #FFFFFF 50%, transparent 50%);
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 /* === Hero 区域 === */
@@ -14,51 +36,59 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 60rpx;
+  z-index: 1;
 }
 
 .logo-emoji {
-  font-size: 120rpx;
+  font-size: 100rpx;
   line-height: 1;
-  animation: bounce 2s ease-in-out infinite;
+  animation: pixelFloat 2s steps(4) infinite;
+  filter: brightness(1.2);
 }
 
-@keyframes bounce {
+@keyframes pixelFloat {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20rpx); }
+  50% { transform: translateY(-16rpx); }
 }
 
 .main-title {
   font-family: var(--font-title);
-  font-size: 56rpx;
+  font-size: 48rpx;
   font-weight: bold;
-  color: var(--color-text);
-  letter-spacing: 8rpx;
+  color: #FFFFFF;
+  letter-spacing: 6rpx;
   margin-top: 20rpx;
+  text-shadow: 3rpx 3rpx 0rpx #FF0000;
 }
 
 .sub-title {
-  font-size: 22rpx;
-  color: var(--color-text-light);
+  font-size: 20rpx;
+  color: #AAAAAA;
   letter-spacing: 4rpx;
   margin-top: 8rpx;
+  font-family: var(--font-pixel);
 }
 
 .motto {
   margin-top: 30rpx;
   text-align: center;
+  background: #000000;
+  border: 3rpx solid #FFFFFF;
+  padding: 16rpx 32rpx;
 }
 
 .motto-text {
-  font-size: 26rpx;
-  color: var(--color-primary);
-  font-style: italic;
+  font-size: 24rpx;
+  color: #FF0000;
+  font-family: var(--font-pixel);
 }
 
 .motto-location {
   display: block;
-  font-size: 22rpx;
-  color: var(--color-text-light);
+  font-size: 20rpx;
+  color: #AAAAAA;
   margin-top: 6rpx;
+  font-family: var(--font-pixel);
 }
 
 /* === 功能卡片 === */
@@ -66,21 +96,28 @@
   width: 100%;
   padding: 0 32rpx;
   box-sizing: border-box;
+  z-index: 1;
 }
 
 .feature-card {
   display: flex;
   align-items: center;
-  background: var(--color-bg-card);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
+  background: #000000;
+  border: 3rpx solid #FFFFFF;
   padding: 28rpx 24rpx;
   margin-bottom: 20rpx;
-  transition: transform 0.2s;
+  transition: none;
+  position: relative;
 }
 
 .feature-card:active {
-  transform: scale(0.97);
+  background: #FFFFFF;
+}
+
+.feature-card:active .card-title,
+.feature-card:active .card-desc,
+.feature-card:active .card-arrow {
+  color: #000000;
 }
 
 .card-icon {
@@ -98,27 +135,30 @@
 .card-title {
   font-size: 30rpx;
   font-weight: 600;
-  color: var(--color-text);
+  color: #FFFFFF;
+  font-family: var(--font-pixel);
   margin-bottom: 4rpx;
 }
 
 .card-desc {
-  font-size: 24rpx;
-  color: var(--color-text-light);
+  font-size: 22rpx;
+  color: #AAAAAA;
+  font-family: var(--font-pixel);
 }
 
 .card-arrow {
   font-size: 32rpx;
-  color: var(--color-text-light);
+  color: #FFFFFF;
   flex-shrink: 0;
 }
 
 .card-tag {
   font-size: 20rpx;
-  color: var(--color-text-light);
-  background: #F0EDE8;
+  color: #FF0000;
+  background: #000000;
+  border: 1rpx solid #FF0000;
   padding: 4rpx 12rpx;
-  border-radius: 20rpx;
+  font-family: var(--font-pixel);
 }
 
 .disabled-card {
@@ -132,8 +172,8 @@
   justify-content: center;
   margin-top: 40rpx;
   padding: 30rpx 40rpx;
-  background: rgba(255, 255, 255, 0.6);
-  border-radius: var(--radius-lg);
+  background: #000000;
+  border: 3rpx solid #FFFFFF;
   margin-bottom: 50rpx;
 }
 
@@ -148,19 +188,20 @@
   font-family: var(--font-title);
   font-size: 40rpx;
   font-weight: bold;
-  color: var(--color-primary);
+  color: #FF0000;
 }
 
 .stat-label {
-  font-size: 22rpx;
-  color: var(--color-text-light);
+  font-size: 20rpx;
+  color: #AAAAAA;
   margin-top: 4rpx;
+  font-family: var(--font-pixel);
 }
 
 .stat-divider {
   width: 2rpx;
   height: 50rpx;
-  background: var(--color-border);
+  background: #FFFFFF;
 }
 
 /* === 底部 === */
@@ -172,12 +213,14 @@
 }
 
 .footer-text {
-  font-size: 22rpx;
-  color: var(--color-text-light);
+  font-size: 20rpx;
+  color: #AAAAAA;
+  font-family: var(--font-pixel);
 }
 
 .footer-version {
-  font-size: 20rpx;
-  color: #CCC;
+  font-size: 18rpx;
+  color: #666666;
   margin-top: 6rpx;
+  font-family: var(--font-pixel);
 }
