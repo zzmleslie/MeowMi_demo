@@ -1,0 +1,201 @@
+{
+  "sceneId": "ch1_meet_all",
+  "chapterId": "chapter_1",
+  "lines": [
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "人类很喜欢给东西起名字。好像不起名字，东西就不存在一样。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "我们猫不这么想——存在不需要名字，阳光不需要名字，风不需要名字，一只猫趴在另一只猫旁边也不需要名字。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "大黄说要带你\"巡山\"——认识校园里每一只猫。"
+    },
+    {
+      "type": "trigger",
+      "speaker": "",
+      "text": "meet_雪球"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "梧桐树上。她白得像一捧雪落在枯枝上。你等了她半天，她没下来。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "大黄",
+      "text": "走吧。她就这样——以前有家。后来没有了。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "你",
+      "text": "为什么？"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "大黄",
+      "text": "人类的事，猫不懂。她也不说。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "走到门口时你回头——她在看你。就一眼。然后转开了。尾巴尖轻轻晃了一下——像钟摆。"
+    },
+    {
+      "type": "trigger",
+      "speaker": "",
+      "text": "meet_小橘"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "食堂后门。一只全橘色短毛猫围着你转了至少二十圈。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "小橘",
+      "text": "你从哪来的？城里？乡下？你多大？你吃什么长大的？你喜欢鱼吗？我不喜欢——骗你的我什么都喜欢！"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "小橘",
+      "text": "你闻起来有点特别——像很远的地方的味道。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "你",
+      "text": "你真的——一直在说话吗？"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "小橘",
+      "text": "嘿嘿。大家都这么说。你是今天第五个——不，你是第一个新来的！走吧，我带你去最好睡的长椅！"
+    },
+    {
+      "type": "trigger",
+      "speaker": "",
+      "text": "meet_花花"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "花坛边。她躲在花丛后面，只露出半个脸。大黄轻轻叫了一声，她才慢慢走出来。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "她看了你很久。然后叼了一片叶子放在你面前。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "大黄",
+      "text": "她给你的。收着吧。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "你不明白一片叶子有什么意义。但你还是收下了。后来大黄告诉你——花花以前有四个孩子。她是那种把一切好东西都留给孩子的人。给你叶子，说明她觉得你是小孩。"
+    },
+    {
+      "type": "trigger",
+      "speaker": "",
+      "text": "meet_墨墨"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "操场看台。黄昏。一只黑猫从阴影里走出来——黑到你只能看见他黄色的眼睛。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "墨墨",
+      "text": "你也想找个安静的地方。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "你",
+      "text": "你怎么知道？"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "墨墨",
+      "text": "来这里的——都是。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "沉默了很久。天完全黑了。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "墨墨",
+      "text": "看。木星。以前有个老人在我旁边，他告诉我的。他还说——万物皆有裂痕，那是光照进来的地方。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "你",
+      "text": "什么意思？"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "墨墨",
+      "text": "不知道。但每次念完，心里会舒服一点。这就够了。"
+    },
+    {
+      "type": "trigger",
+      "speaker": "",
+      "text": "meet_奶茶"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "宿舍区。你远远看见一个人的背影，肩膀上趴着一只小花猫。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "奶茶",
+      "text": "喂——新来的！！我叫奶茶！！人类起的名字！！好听吧！！"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "大黄摇了摇头，但嘴巴是弯的。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "那是你第一次知道：有些猫是有\"人类\"的。不是投喂的人类——是专属的人类。那个概念让你愣了很久。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "晚上。你趴在大黄旁边。"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "你",
+      "text": "大黄，你有名字吗？"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "大黄",
+      "text": "他们叫我\"大黄\"。那不是名字——是颜色。颜色就够了。名字太重了——有了名字，离开的时候就会有人喊。而我不确定自己能不能每次都回来。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "你在心里悄悄给自己想了一个名字。不是给人类喊的——是给自己的。就像墨墨说的那颗木星：别人不需要知道，但你自己知道它在那里。"
+    },
+    {
+      "type": "narration",
+      "speaker": "",
+      "text": "——第1章·名字 完——"
+    }
+  ]
+}
